@@ -1,7 +1,9 @@
 from turtle import Turtle
 ALIGNMENT = "center"
-FONT = ("Courier", 80, "normal")
-FONT1 = ("Courier", 24, "normal")
+FONT1 = ("Courier", 80, "normal")
+FONT2 = ("Courier", 24, "normal")
+FONT3 = ("Courier", 20, "bold")
+FONT4 = ("Courier", 16, "bold")
 
 
 class Scoreboard(Turtle):
@@ -17,7 +19,7 @@ class Scoreboard(Turtle):
     def update_scoreboard(self):
         self.clear()
         self.goto(0, 180)
-        self.write(f"{self.p_l_score}  {self.p_r_score}", align=ALIGNMENT, font=FONT)
+        self.write(f"{self.p_l_score}  {self.p_r_score}", align=ALIGNMENT, font=FONT1)
 
     def paddle_right_win(self):
         self.p_r_score += 1
@@ -29,13 +31,17 @@ class Scoreboard(Turtle):
 
     def game_over(self):
         self.goto(0, 0)
-        self.write("GAME OVER", align=ALIGNMENT, font=FONT1)
+        self.write("GAME OVER", align=ALIGNMENT, font=FONT2)
         self.goto(0, -50)
         if self.p_r_score == 10:
             winner = "Right"
         else:
             winner = "Left"
-        self.write(f"{winner} player is winner", align=ALIGNMENT, font=FONT1)
+        self.write(f"{winner} player is winner.", align=ALIGNMENT, font=FONT2)
+        self.goto(0, -100)
+        self.write("Created by Alireza Mak.", align=ALIGNMENT, font=FONT3)
+        self.goto(0, -150)
+        self.write("Alirezamak.com", align=ALIGNMENT, font=FONT4)
 
     def check_game_status(self):
         self.update_scoreboard()
